@@ -1,0 +1,20 @@
+{
+  "name": "lazyeditmirror",
+  "version": "1.1.1",
+  "private": true,
+  "description": "LazyEditMirror - a Premiere Pro UXP panel that mirrors the Front Camera edit (cuts, gaps, timing) onto the Side Camera track, synced by audio.",
+  "author": "Raisul Sohan",
+  "license": "MIT",
+  "homepage": "https://raisulsohan.com",
+  "scripts": {
+    "check": "node --check main.js && node --check plan.js && node --check premiere.js && node --check sync.js && node --check log.js && node --check helper.js && node --check helper/audio.js && node --check helper/sync-helper.mjs",
+    "test": "npm run check && node tools/test-plan.mjs && node tools/test-audio.mjs && node tools/test-sync.mjs",
+    "build": "node tools/build-ccx.mjs",
+    "release": "node tools/release.mjs",
+    "sync": "node tools/sync-installed.mjs",
+    "helper": "node helper/sync-helper.mjs",
+    "helper:selftest": "node tools/selftest-helper.mjs",
+    "icons": "node tools/make-icons.mjs",
+    "preview": "node tools/serve-preview.mjs"
+  }
+}

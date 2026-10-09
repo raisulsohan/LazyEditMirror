@@ -1,0 +1,42 @@
+LazyEditMirror - INSTALLATION
+=============================
+
+LazyEditMirror is a Premiere Pro panel that copies a Front Camera edit onto a
+Side Camera track: same cuts, same timing, synced by audio. Premiere Pro 26.5
+or later.
+
+WINDOWS
+1. Extract the ZIP completely.
+2. Close Premiere Pro.
+3. Run "Install LazyEditMirror - Windows.bat".
+4. Open Premiere Pro and choose Window > UXP Plugins > LazyEditMirror.
+
+The installer puts the panel into Premiere Pro and a small audio engine into
+your user folder (%LOCALAPPDATA%\LazyEditMirror). The engine runs quietly in
+the background when the panel needs it; there is nothing to start by hand. It
+needs Node.js and ffmpeg: if they are missing, the installer (and later the
+engine) offer to install them with winget, which is built into Windows 10/11.
+Nothing is downloaded without asking you first.
+
+macOS (EXPERIMENTAL)
+1. Extract the ZIP completely.
+2. Close Premiere Pro.
+3. Open "Install LazyEditMirror - macOS (EXPERIMENTAL).command" (right-click >
+   Open if macOS blocks it).
+4. Open Premiere Pro and choose Window > UXP Plugins > LazyEditMirror.
+   Before syncing, open ~/Library/Application Support/LazyEditMirror/engine/
+   start-helper.command and keep its window open. Needs Node.js (nodejs.org)
+   and ffmpeg (brew install ffmpeg).
+
+UNINSTALL
+Run "Uninstall LazyEditMirror - Windows.bat", or use the Creative Cloud
+desktop app: Plugins > Manage plugins.
+
+HOW TO USE (short version)
+1. Cut your front-camera footage on V1. Keep V2 empty for the side camera and
+   make sure one audio track has no clips.
+2. Open the panel, pick the side-camera file, click Analyze, then Sync.
+3. Repeat with the next side-camera file until every clip is covered.
+
+Full manual, troubleshooting and the source: README.md and the docs folder,
+or https://raisulsohan.com

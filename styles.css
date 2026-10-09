@@ -1,0 +1,554 @@
+/*
+ * LazyEditMirror panel styles.
+ * UXP has no CSS grid and no float; everything is flexbox. Colors sit in
+ * variables so the palette can be tuned in one place. The look follows
+ * Premiere's own dark UI: flat cards, one accent, generous spacing.
+ */
+:root {
+  --bg: #1e1e1e;
+  --card: #262626;
+  --card-2: #2d2d2d;
+  --input: #171717;
+  --line: #383838;
+  --line-strong: #4a4a4a;
+  --text: #ededed;
+  --text-2: #b4b4b4;
+  --muted: #8a8a8a;
+  --accent: #6c74ff;
+  --accent-strong: #5159d9;
+  --accent-soft: #2b2e55;
+  --ok: #4fcf8f;
+  --ok-soft: #1f3b2d;
+  --warn: #f2c14e;
+  --warn-soft: #3d3420;
+  --bad: #ff7b72;
+  --bad-soft: #3f2422;
+  --done: #7f8da3;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Adobe Clean", "Segoe UI", sans-serif;
+  font-size: 12px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 12px 14px 12px;
+}
+
+/* ---------- header ---------- */
+
+.topbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.brand-mark {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background-color: var(--accent-strong);
+  padding: 0 5px;
+  margin-right: 9px;
+}
+
+.brand-mark-solid {
+  width: 6px;
+  height: 12px;
+  border-radius: 2px;
+  background-color: #ffffff;
+}
+
+.brand-mark-axis {
+  width: 1px;
+  height: 16px;
+  margin: 0 2px;
+  background-color: rgba(255, 255, 255, 0.55);
+}
+
+.brand-mark-outline {
+  width: 4px;
+  height: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+}
+
+.brand-name {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.brand-sub {
+  color: var(--muted);
+  font-size: 10.5px;
+  margin-top: 2px;
+}
+
+.pill {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background-color: var(--card);
+  color: var(--text-2);
+  padding: 4px 9px 4px 7px;
+  font-size: 10.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pill:hover {
+  border-color: var(--accent);
+}
+
+.pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 4px;
+  background-color: var(--muted);
+  margin-right: 6px;
+}
+
+.pill--ok .pill-dot {
+  background-color: var(--ok);
+}
+
+.pill--ok {
+  color: var(--ok);
+  border-color: var(--ok-soft);
+  background-color: var(--ok-soft);
+}
+
+.pill--starting .pill-dot {
+  background-color: var(--warn);
+}
+
+.pill--starting {
+  color: var(--warn);
+  border-color: var(--warn-soft);
+  background-color: var(--warn-soft);
+}
+
+.pill--off .pill-dot,
+.pill--missing .pill-dot {
+  background-color: var(--bad);
+}
+
+.pill--off,
+.pill--missing {
+  color: var(--bad);
+  border-color: var(--bad-soft);
+  background-color: var(--bad-soft);
+}
+
+/* ---------- cards ---------- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background-color: var(--card);
+  padding: 11px 12px 12px 12px;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: var(--text-2);
+  margin-bottom: 9px;
+}
+
+.card-title--between {
+  justify-content: space-between;
+}
+
+.card-title-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 9px;
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  margin-right: 7px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 9px;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.field label {
+  color: var(--text-2);
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+select,
+input,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--input);
+  color: var(--text);
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 12px;
+  min-height: 28px;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+  border-color: var(--accent);
+}
+
+.hint {
+  margin: 5px 0 0 0;
+  color: var(--muted);
+  font-size: 10.5px;
+  line-height: 1.45;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.row--wrap {
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.row--wrap > .btn {
+  margin: 4px 6px 0 0;
+}
+
+.link {
+  align-self: flex-start;
+  color: var(--accent);
+  padding: 4px 0 0 0;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.link:hover {
+  color: #8f96ff;
+}
+
+.advanced {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+  margin-top: 8px;
+  padding-top: 10px;
+}
+
+/* ---------- buttons (styled divs; see index.html) ---------- */
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: var(--card-2);
+  color: var(--text);
+  border: 1px solid var(--line-strong);
+  border-radius: 7px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  border-color: var(--accent);
+  background-color: #343434;
+}
+
+.btn--primary {
+  background-color: var(--accent-strong);
+  border-color: var(--accent-strong);
+  color: #ffffff;
+}
+
+.btn--primary:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn--accent {
+  background-color: var(--card-2);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.btn--danger {
+  background-color: #b4433a;
+  border-color: #b4433a;
+  color: #ffffff;
+}
+
+.btn--danger:hover {
+  background-color: #c84f45;
+  border-color: #c84f45;
+}
+
+.btn--small {
+  padding: 3px 9px;
+  font-size: 10.5px;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.btn--disabled,
+.btn--disabled:hover {
+  opacity: 0.4;
+  border-color: var(--line-strong);
+  background-color: var(--card-2);
+}
+
+.btn--primary.btn--disabled,
+.btn--primary.btn--disabled:hover {
+  background-color: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  margin: 2px 0 8px 0;
+}
+
+.actions .btn {
+  flex-grow: 1;
+  min-height: 32px;
+}
+
+.actions .btn + .btn {
+  margin-left: 8px;
+}
+
+/* ---------- progress and status ---------- */
+
+.progress {
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--line);
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 4px;
+  width: 0;
+  border-radius: 2px;
+  background-color: var(--accent);
+}
+
+.status {
+  margin: 0 0 10px 0;
+  color: var(--text-2);
+  line-height: 1.45;
+  min-height: 16px;
+}
+
+.status--ok {
+  color: var(--ok);
+}
+
+.status--warn {
+  color: var(--warn);
+}
+
+.status--error {
+  color: var(--bad);
+}
+
+/* ---------- result card ---------- */
+
+.result {
+  border-color: var(--line-strong);
+}
+
+.result--ok {
+  border-color: var(--ok);
+}
+
+.result--warn {
+  border-color: var(--warn);
+}
+
+.result--error {
+  border-color: var(--bad);
+}
+
+.result-files {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 0;
+  border-top: 1px solid var(--line);
+}
+
+.file-row:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.file-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: var(--muted);
+  margin-right: 9px;
+}
+
+.file-row--ok .file-dot {
+  background-color: var(--ok);
+}
+
+.file-row--done .file-dot {
+  background-color: var(--done);
+}
+
+.file-row--wait .file-dot {
+  background-color: var(--warn);
+}
+
+.file-row--bad .file-dot {
+  background-color: var(--bad);
+}
+
+.file-main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.file-name {
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-sub {
+  color: var(--muted);
+  font-size: 10.5px;
+  margin-top: 1px;
+}
+
+.file-count {
+  color: var(--text-2);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+.file-row--ok .file-count {
+  color: var(--ok);
+}
+
+.file-row--done .file-count {
+  color: var(--done);
+}
+
+.result-totals {
+  margin: 10px 0 0 0;
+  padding-top: 9px;
+  border-top: 1px solid var(--line);
+  color: var(--text);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.result-totals--error {
+  color: var(--bad);
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+  font-weight: 400;
+}
+
+/* ---------- log ---------- */
+
+#log-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.log-card textarea {
+  height: 140px;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.log-card .row > .btn {
+  margin-left: 5px;
+}
+
+.foot {
+  margin: 2px 0 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+/* Last, so it wins over every display rule above. */
+.hint--hidden {
+  display: none !important;
+}
