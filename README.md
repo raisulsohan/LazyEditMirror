@@ -6,6 +6,8 @@
 > audio. Pick a side-camera file, click Analyze, click Sync. Nothing to set
 > up, nothing overwritten.
 
+![LazyEditMirror demo: cut the front camera, Analyze matches the two cameras by audio, Sync places the side camera with the same cuts](docs/demo/lazyeditmirror-demo.gif)
+
 Developed by **[Raisul Sohan](https://raisulsohan.com)** · **Version 1.1.2** ·
 [Documentation](docs/README.md) · [Changelog](CHANGELOG.md) · MIT licensed
 
