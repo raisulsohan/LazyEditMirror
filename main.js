@@ -19,10 +19,11 @@ const { createEngine } = require("./sync.js");
 const { createLog } = require("./log.js");
 const { createAudioClient } = require("./helper.js");
 
-const VERSION = "1.1.1";
+const VERSION = "1.1.2";
 const LOG_FILE = "LazyEditMirror-log.txt";
 const ENGINE_URL = "http://127.0.0.1:5182";
 const ENGINE_LAUNCH_URL = "lazyeditmirror:start";
+const AUTHOR_URL = "https://raisulsohan.com";
 const KEEPALIVE_MS = 5 * 60 * 1000;
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -58,6 +59,7 @@ const logArea = el("log");
 const logPathElement = el("log-path");
 const copyLogButton = el("copy-log-button");
 const saveLogButton = el("save-log-button");
+const authorLink = el("author-link");
 const clearLogButton = el("clear-log-button");
 const versionElement = el("version");
 
@@ -358,6 +360,15 @@ async function openEngineFolder() {
     setStatus("Engine folder opened. Double-click start-helper" + (isMac() ? ".command" : ".bat") + " there and keep its window open.", null);
   } catch (error) {
     setStatus("Could not open the folder: " + ((error && error.message) || error), "error");
+  }
+}
+
+async function openAuthorSite() {
+  try {
+    const result = await uxp.shell.openExternal(AUTHOR_URL, "Opens Raisul Sohan's website in your browser.");
+    if (result) throw new Error(String(result));
+  } catch (error) {
+    setStatus("Could not open the browser (" + ((error && error.message) || error) + "). The site is " + AUTHOR_URL + ".", "warn");
   }
 }
 
@@ -686,6 +697,7 @@ onClick(logToggle, () => {
 onClick(copyLogButton, copyLog);
 onClick(saveLogButton, saveLogAs);
 onClick(clearLogButton, () => log.clear());
+authorLink.addEventListener("click", openAuthorSite);
 masterSelect.addEventListener("change", () => {
   invalidate();
   refresh(true); // re-mark which files are front files

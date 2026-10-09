@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.2 (2026-10-09)
+
+- More colourful panel: a deep indigo base, a colour stripe under the
+  header, its own colour for every card (violet tracks, cyan footage, green
+  result, amber log), a violet *Analyze* and a pink *Sync* button and a
+  violet-pink-amber progress bar. Gradients sit on top of solid colours, so
+  a host that ignores them still shows the solid colour.
+- "Raisul Sohan" in the footer is a link: a click opens
+  https://raisulsohan.com in the browser (the manifest now also allows the
+  `https` scheme for `shell.openExternal`).
+
 ## 1.1.1 (2026-10-10)
 
 - Buttons, the engine pill and the advanced-options link are styled `div`s:

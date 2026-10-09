@@ -6,7 +6,7 @@
 > audio. Pick a side-camera file, click Analyze, click Sync. Nothing to set
 > up, nothing overwritten.
 
-Developed by **[Raisul Sohan](https://raisulsohan.com)** · **Version 1.1.1** ·
+Developed by **[Raisul Sohan](https://raisulsohan.com)** · **Version 1.1.2** ·
 [Documentation](docs/README.md) · [Changelog](CHANGELOG.md) · MIT licensed
 
 ---
@@ -44,7 +44,7 @@ already on the Target track are never touched.
 
 **Windows**
 
-1. Download `LazyEditMirror-1.1.1.zip` and extract it completely.
+1. Download `LazyEditMirror-1.1.2.zip` and extract it completely.
 2. Close Premiere Pro and run **Install LazyEditMirror - Windows.bat**. It
    installs the panel through Creative Cloud's own plugin installer, puts
    the audio engine in your user folder (`%LOCALAPPDATA%\LazyEditMirror`),

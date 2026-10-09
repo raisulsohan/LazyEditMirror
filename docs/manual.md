@@ -1,6 +1,6 @@
 # LazyEditMirror manual
 
-*Written for LazyEditMirror 1.1.1.*
+*Written for LazyEditMirror 1.1.2.*
 
 ## 1. The idea
 

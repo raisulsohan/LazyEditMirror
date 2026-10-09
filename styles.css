@@ -1,29 +1,38 @@
 /*
  * LazyEditMirror panel styles.
  * UXP has no CSS grid and no float; everything is flexbox. Colors sit in
- * variables so the palette can be tuned in one place. The look follows
- * Premiere's own dark UI: flat cards, one accent, generous spacing.
+ * variables so the palette can be tuned in one place. Each step has its own
+ * colour (violet, cyan, green, amber) on a deep indigo base. Gradients are
+ * only ever added on top of a solid background-color, so a host that drops
+ * them still shows the solid colour.
  */
 :root {
-  --bg: #1e1e1e;
-  --card: #262626;
-  --card-2: #2d2d2d;
-  --input: #171717;
-  --line: #383838;
-  --line-strong: #4a4a4a;
-  --text: #ededed;
-  --text-2: #b4b4b4;
-  --muted: #8a8a8a;
-  --accent: #6c74ff;
-  --accent-strong: #5159d9;
-  --accent-soft: #2b2e55;
-  --ok: #4fcf8f;
-  --ok-soft: #1f3b2d;
-  --warn: #f2c14e;
-  --warn-soft: #3d3420;
-  --bad: #ff7b72;
-  --bad-soft: #3f2422;
-  --done: #7f8da3;
+  --bg: #15131f;
+  --card: #1f1c2e;
+  --card-2: #2a2640;
+  --input: #110f1a;
+  --line: #312c48;
+  --line-strong: #463f66;
+  --text: #f1effa;
+  --text-2: #c3bedb;
+  --muted: #8d87a8;
+  --accent: #a78bfa;
+  --accent-strong: #7c3aed;
+  --accent-soft: #2e2452;
+  --pink: #ec4899;
+  --pink-strong: #db2777;
+  --pink-soft: #43203a;
+  --cyan: #22d3ee;
+  --cyan-soft: #143a45;
+  --amber: #fbbf24;
+  --amber-soft: #3d3218;
+  --ok: #34d399;
+  --ok-soft: #173a30;
+  --warn: #fbbf24;
+  --warn-soft: #3d3218;
+  --bad: #fb7185;
+  --bad-soft: #43202a;
+  --done: #93a4c3;
 }
 
 body {
@@ -65,6 +74,7 @@ body {
   height: 26px;
   border-radius: 7px;
   background-color: var(--accent-strong);
+  background-image: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
   padding: 0 5px;
   margin-right: 9px;
 }
@@ -94,6 +104,10 @@ body {
   font-size: 15px;
   font-weight: 700;
   line-height: 1.1;
+}
+
+.brand-name-accent {
+  color: var(--pink);
 }
 
 .brand-sub {
@@ -160,6 +174,29 @@ body {
   background-color: var(--bad-soft);
 }
 
+/* A row of colour blocks under the header (solid blocks, no gradient needed). */
+.stripe {
+  display: flex;
+  flex-direction: row;
+  height: 3px;
+  margin: -2px 0 12px 0;
+}
+
+.stripe-part {
+  flex-grow: 1;
+  height: 3px;
+}
+
+.stripe-part + .stripe-part {
+  margin-left: 3px;
+}
+
+.stripe--violet { background-color: var(--accent-strong); }
+.stripe--pink { background-color: var(--pink); }
+.stripe--cyan { background-color: var(--cyan); }
+.stripe--green { background-color: var(--ok); }
+.stripe--amber { background-color: var(--amber); }
+
 /* ---------- cards ---------- */
 
 .card {
@@ -200,11 +237,40 @@ body {
   width: 17px;
   height: 17px;
   border-radius: 9px;
-  background-color: var(--accent-soft);
-  color: var(--accent);
+  background-color: var(--accent-strong);
+  color: #ffffff;
   font-size: 10px;
   font-weight: 700;
   margin-right: 7px;
+}
+
+/* Per-step colours: a coloured left edge, title and step badge. */
+.card--violet {
+  border-left: 3px solid var(--accent-strong);
+}
+
+.card--violet .card-title-text {
+  color: var(--accent);
+}
+
+.card--cyan {
+  border-left: 3px solid var(--cyan);
+}
+
+.card--cyan .card-title-text {
+  color: var(--cyan);
+}
+
+.card--cyan .step {
+  background-color: #0891b2;
+}
+
+.card--amber {
+  border-left: 3px solid var(--amber);
+}
+
+.card--amber .card-title-text {
+  color: var(--amber);
 }
 
 .field {
@@ -268,15 +334,15 @@ textarea:focus {
 
 .link {
   align-self: flex-start;
-  color: var(--accent);
   padding: 4px 0 0 0;
   margin-top: 4px;
+  color: var(--cyan);
   font-size: 11px;
   font-weight: 600;
 }
 
 .link:hover {
-  color: #8f96ff;
+  color: #ffffff;
 }
 
 .advanced {
@@ -318,14 +384,19 @@ textarea:focus {
 }
 
 .btn--primary:hover {
-  background-color: var(--accent);
+  background-color: #8b5cf6;
   border-color: var(--accent);
 }
 
 .btn--accent {
-  background-color: var(--card-2);
-  border-color: var(--accent);
-  color: var(--text);
+  background-color: var(--pink-strong);
+  border-color: var(--pink-strong);
+  color: #ffffff;
+}
+
+.btn--accent:hover {
+  background-color: var(--pink);
+  border-color: #f472b6;
 }
 
 .btn--danger {
@@ -359,6 +430,12 @@ textarea:focus {
   border-color: var(--accent-strong);
 }
 
+.btn--accent.btn--disabled,
+.btn--accent.btn--disabled:hover {
+  background-color: var(--pink-strong);
+  border-color: var(--pink-strong);
+}
+
 .actions {
   display: flex;
   flex-direction: row;
@@ -388,7 +465,8 @@ textarea:focus {
   height: 4px;
   width: 0;
   border-radius: 2px;
-  background-color: var(--accent);
+  background-color: var(--pink);
+  background-image: linear-gradient(90deg, #7c3aed 0%, #ec4899 55%, #fbbf24 100%);
 }
 
 .status {
@@ -414,10 +492,16 @@ textarea:focus {
 
 .result {
   border-color: var(--line-strong);
+  border-left: 3px solid var(--ok);
+}
+
+.result .card-title {
+  color: var(--text);
 }
 
 .result--ok {
   border-color: var(--ok);
+  background-color: #1b2630;
 }
 
 .result--warn {
@@ -546,6 +630,16 @@ textarea:focus {
   color: var(--muted);
   font-size: 10px;
   line-height: 1.45;
+}
+
+.author-link {
+  color: var(--pink);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.author-link:hover {
+  color: var(--amber);
 }
 
 /* Last, so it wins over every display rule above. */

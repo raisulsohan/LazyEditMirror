@@ -1,6 +1,6 @@
 # Development
 
-*Written for LazyEditMirror 1.1.1.*
+*Written for LazyEditMirror 1.1.2.*
 
 ## How it fits together
 

@@ -49,10 +49,10 @@ function page() {
   html = html.replace('<div id="sync-button" class="btn btn--accent btn--disabled">Sync</div>', '<div id="sync-button" class="btn btn--accent">Sync 23 clips</div>');
   html = html.replace('class="status">Open your sequence, pick the side footage and click Analyze.', 'class="status status--ok">Ready: 23 clips to place on V2 - Video 2. Click Sync.');
   html = html.replace('<div id="progress" class="progress hint--hidden"><div id="progress-bar" class="progress-bar"></div></div>', '<div id="progress" class="progress"><div id="progress-bar" class="progress-bar" style="width: 40%"></div></div>');
-  html = html.replace('<span id="version"></span>', '<span id="version">1.1.1</span>');
+  html = html.replace('<span id="version"></span>', '<span id="version">1.1.2</span>');
   html = html.replace(
     '<textarea id="log" readonly></textarea>',
-    '<textarea id="log" readonly>[03:05:10] LazyEditMirror 1.1.1 loaded.\n[03:05:10] Read sequence "C0002": 3 video tracks, 9 media clips in the project.\n[03:05:14] Audio: C0056.mp4 vs C0002.mp4: side = front + 0.635 s (match; correlation 0.84 over 281.3 s).</textarea>'
+    '<textarea id="log" readonly>[03:05:10] LazyEditMirror 1.1.2 loaded.\n[03:05:10] Read sequence "C0002": 3 video tracks, 9 media clips in the project.\n[03:05:14] Audio: C0056.mp4 vs C0002.mp4: side = front + 0.635 s (match; correlation 0.84 over 281.3 s).</textarea>'
   );
   html = html.replace('<div id="log-body" class="hint--hidden">', '<div id="log-body">');
   return html;

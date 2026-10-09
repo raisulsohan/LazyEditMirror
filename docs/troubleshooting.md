@@ -1,6 +1,6 @@
 # If something goes wrong
 
-*Written for LazyEditMirror 1.1.1.* The panel's log (*Show* under *Log*,
+*Written for LazyEditMirror 1.1.2.* The panel's log (*Show* under *Log*,
 and the file named there) explains most situations; this page lists the
 messages and what to do.
 
